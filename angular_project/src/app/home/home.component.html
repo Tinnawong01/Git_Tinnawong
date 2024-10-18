@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="grid-item item1">
+      <div class="box">
+        <div class="text-top">
+          <p><i class="far fa-calendar-alt"></i> จองสนามกีฬา</p>
+          <div class="text-none">
+            <p>ศูนย์กีฬาแห่งมหาวิทยาลัยจองสนามกีฬาออนไลน์และเช็คอินได้ง่ายๆในที่เดียว</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-search">
+        <div>
+          <p><i class="fa fa-soccer-ball-o"></i>เลือกกีฬา</p>
+          <select [(ngModel)]="selectedStadiumId">
+            <option value="0">เลือกสนามกีฬา</option>
+            <ng-container *ngFor="let stadium of Stadiumshow">
+              <option [value]="stadium.id_stadium">- {{ stadium.stadium_name }}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div>
+          <p><i class="far fa-calendar-alt"></i>เลือกวันที่</p>
+          <input placeholder="เลือกวันที่" type="date" id="date" name="date" [(ngModel)]="selectedDate" [min]="minDate">
+        </div>
+      </div>
+      <button class="button-main" (click)="searchBookingTime()"><i class="fa fa-search"></i>ค้นหาสนามกีฬา</button>
+      </div>
+  
+    <div class="grid-content">
+      <ng-container *ngFor="let stadium of Stadiumshow">
+        <div class="box-content">
+          <img src="./assets/img/{{ stadium.path_img }}" alt="{{ stadium.stadium_name }}" width="100%">
+          <div class="text-content">
+            <p class="text-content-22"><i class="fas fa-map-marker-alt"></i> {{ stadium.stadium_name }}</p>
+          </div>
+          <p>สนามกีฬาชนิด: {{ stadium.stadium_name }}</p>
+          <p>สถานที่ตั้ง: 
+            <span style="font-size: 12px;">
+              {{ stadium.location.length > 40 ? (stadium.location | slice:0:40) + '...' : stadium.location }}
+            </span>
+          </p>
+          <p>ข้อมูลสนาม: 
+            <span style="font-size: 12px;">
+              {{ stadium.info_stadium.length > 35 ? (stadium.info_stadium | slice:0:35) + '...' : stadium.info_stadium }}
+            </span>
+          </p>
+          <div class="button-content">
+            <a (click)="searchBookingStadium(stadium.id_stadium)" class="button-submit"><i class="fa fa-plus"></i> จองสนาม</a>
+            <a (click)="Stadiumshowid(stadium.id_stadium)" class="button-view"><i class="fas fa-info-circle"></i>เพิ่มเติม</a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    
+    <div class="footer">
+      <p>จองสนามกีฬา มก.ฉกส © Tinnawong</p>
+    </div>
+  </div>
+  

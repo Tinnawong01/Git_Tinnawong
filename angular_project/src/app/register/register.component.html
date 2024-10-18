@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box">
+            <div class="text-top">
+                <p><i class="fa fa-user-plus"></i> สมัครสมาชิก</p>
+                <div class="text-none">
+                    <p>ทำการกรอกข้อมูลส่วนตัวของท่านลงไป เพื่อสมัครสมาชิก</p>
+                </div>
+            </div>
+        </div>
+        <form class="modal-content animate">
+            <div class="container-form">
+                <div class="hr-form">
+                    <p><i class="fa fa-lock"></i>อีเมล/รหัสผ่าน</p>
+                </div>
+                <input type="email" placeholder="กรอกอีเมลของท่าน .." name="email" id="email" #email />
+                <div class="form-box-2">
+                    <div class="password-container">
+                        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="กรุณากรอกรหัสผ่านให้มีความยาว 8 ตัวอักษรขึ้นไป"
+                            name="psw" id="password" #password />
+                        <span class="eye-icon" (click)="toggleShowPassword()">
+                            <i class="fa fa-eye" [ngClass]="{ 'fa-eye-slash': !showPassword }"></i>
+                        </span>
+                    </div>
+
+                    <div class="password-container">
+                        <input type="{{ showConfirmPassword ? 'text' : 'password' }}"
+                            placeholder="ยืนยันรหัสผ่านของท่าน .." name="confirmPassword" id="confirmPassword"
+                            #confirmPassword />
+                        <span class="eye-icon" (click)="toggleShowConfirmPassword()">
+                            <i class="fa fa-eye" [ngClass]="{ 'fa-eye-slash': !showConfirmPassword }"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="hr-form">
+                    <p><i class="fa fa-user"></i>รหัสนิสิต/ชื่อ-นามสกุล</p>
+                </div>
+
+                <input type="text" placeholder="กรุณากรอกรหัสนิสิตเป็นตัวเลข 10 หลักเท่านั้น" name="std_id" id="std_id" #std_id
+                    minlength="10" maxlength="10" required />
+                <select name="prefix" id="prefix" #prefix>
+                    <option value="นาย">นาย</option>
+                    <option value="นางสาว">นางสาว</option>
+                    <option value="นาง">นาง</option>
+                </select>
+                <div class="form-box-2">
+                    <input type="text" placeholder="กรอกชื่อ .." name="fname" id="fname" #fname />
+                    <input type="text" placeholder="กรอกนามสกุล .." name="lname" id="lname" #lname />
+                </div>
+                <div class="hr-form">
+                    <p><i class="fa fa-graduation-cap"></i>เพศ/การศึกษา</p>
+                </div>
+                <select name="sex" id="sex" #sex>
+                    <option value="1">ชาย</option>
+                    <option value="2">หญิง</option>
+                </select>
+                <select name="faculty_id" id="faculty_id" #faculty_id (change)="getDepartments(+faculty_id.value)">
+                    <option value="0">เลือกคณะ</option>
+                    <option *ngFor="let faculty of faculties" [value]="'0'+faculty.Facuty_id">{{ faculty.Facuty_name }}
+                    </option>
+                </select>
+
+                <select name="department" id="department" #department>
+                    <option value="0">เลือกหลักสูตร</option>
+                    <option *ngFor="let dept of departments" [value]="dept.Major_id">{{ dept.Major_name }}</option>
+                </select>
+
+                <button class="button-register"
+                    (click)="register(email.value, password.value, confirmPassword.value, std_id.value, prefix.value, fname.value, lname.value, sex.value, faculty_id.value, department.value)">
+                    <i class="fa fa-user-plus"></i>สมัครสมาชิก
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>

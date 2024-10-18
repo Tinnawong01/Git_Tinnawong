@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="grid-item item1">
+    <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+      <div class="text-top">
+        <p><i class="fa fa-database"></i>Admin - จัดการข้อมูล</p>
+        <p style="font-size: 14px;">หมายเลขสนามทั้งหมด ของประเภทนี้</p>
+      </div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <div class="menu-box-under" *ngFor="let tb_stadium of getFilteredStadiums()">
+        <div (click)="Numberid(tb_stadium.id_stadium)" class="menu-under"><i class="fa fa-sort-numeric-asc"></i>เพิ่มหมายเลขสนาม</div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">ลำดับ</th>
+          <th scope="col">ประเภทสนามกีฬา</th>
+          <th scope="col">ชื่อหมายเลขสนามกีฬา</th>
+          <th scope="col">ช่วงเวลา</th>
+          <th scope="col">รายการ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stadiumid of Stadiumids; let i = index">
+          <td data-label="ลำดับ">{{ i + 1 }}</td>
+          <td data-label="ประเภทสนามกีฬา">{{ stadiumid.stadium_name }}</td>
+          <td data-label="ชื่อหมายเลขสนามกีฬา">{{ stadiumid.number_name }}</td>
+          <td>
+            <button class="button-qr" (click)="searchBookingTime(stadiumid.id_stadium, stadiumid.id_number, id_member)">
+              <i class="fa fa-cog"></i>เเก้ไขช่วงเวลา
+            </button>
+            
+          </td>
+          <td>
+            <div class="box4">
+              <button class="button-submit" (click)="Editnumber(stadiumid.id_stadium, stadiumid.id_number)">
+                <i class="fa fa-cog"></i>เเก้ไข
+              </button>
+              
+              <button class="button-view" (click)="confirmDelete(stadiumid.id_number)">
+                <i class="fa fa-trash"></i>ลบ
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

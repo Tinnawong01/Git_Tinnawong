@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+            <div class="text-top">
+                <p><i class="fa fa-user"></i> ข้อมูลส่วนตัว</p>
+                <div class="text-none"><p>ข้อมูลส่วนตัว-เปลี่ยนชื่อ-นามสกุล</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item item1">
+        <ng-container *ngFor="let profileshow of profileshowid">
+            <div class="container-form">
+                <div class="hr-form">
+                    <p><i class="fa fa-user"></i>ชื่อ-นามสกุล</p>
+                </div>
+                <select readonly>
+                    <option [value]="profileshow.prefix" readonly>{{ profileshow.prefix }}</option>
+                </select>
+                <div class="form-box-2">
+                    <input type="text" [value]="profileshow.fname" name="fname" id="fname" #fname />
+                    <input type="text" [value]="profileshow.lname" name="lname" id="lname" #lname />
+                </div>
+                <button class="button-submit" (click)="confirmEditName(fname.value, lname.value)"><i class="fa fa-gear"></i>ยืนยันการแก้ไข</button>
+            </div>
+        </ng-container>
+    </div>
+</div>

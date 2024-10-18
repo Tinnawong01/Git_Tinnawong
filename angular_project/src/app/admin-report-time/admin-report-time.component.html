@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="grid-item item1">
+      <div class="box flex-between" style="border-bottom:0px;margin-bottom: 5px;">
+        <div class="text-top">
+          <p><i class="fa fa-bar-chart"></i>Admin - รายงานข้อมูล ช่วงเวลา</p>
+          <p style="font-size: 14px;">รายงานข้อมูลการเข้าใช้สนามกีฬา</p>
+        </div>
+        <!-- <button class="button-back button-width" routerLink="/admin-report"><i class="fas fa-undo-alt"></i></button> -->
+      </div>
+      <!-- <div class="menu-box">
+        <a routerLink="/admin-main"><div class="menu-main"><i class="fa fa-search"></i>ค้นหาประวัติการจองสนาม</div></a>
+        <a routerLink="/admin-manage"><div class="menu-main"><i class="fa fa-database"></i>จัดการข้อมูล</div></a>
+        <a routerLink="/admin-report"><div class="menu-main"><i class="fa fa-bar-chart"></i>รายงานข้อมูล</div></a>
+      </div> -->
+    </div>
+    <div class="grid-item">
+      <!-- <button class="menu-under button-width" routerLink="/admin-report"><i class="fas fa-undo-alt"></i>วัน/เดือน</button> -->
+      <!-- <div class="menu-box-under2">
+        <div class="menu-box-select1">
+          <select style="margin-bottom: 0px;" [(ngModel)]="selectedTime" (change)="onSearch()">
+            <option value="">เลือกช่วงเวลา</option>
+            <option *ngFor="let time of timess" [value]="time">{{ time }}</option>
+          </select>
+          <button class="button-back" (click)="refreshBookings()"><i class="fa fa-refresh"></i></button>
+        </div>
+      </div> -->
+      <table class="table table-striped" id="table1">
+        <thead>
+          <tr>
+            <th scope="col">ลำดับ</th>
+            <th scope="col">ประเภทสนาม</th>
+            <!-- <th scope="col">หมายเลขสนาม</th> -->
+            <th scope="col">ช่วงเวลา</th>
+            <th scope="col">จำนวนครั้ง</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="paginatedBookings().length > 0; else noResults">
+            <tr *ngFor="let booking of paginatedBookings(); let i = index">
+              <td data-label="ลำดับ">{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+              <td data-label="ประเภทสนาม">{{ booking.stadium_name }}</td>
+              <!-- <td data-label="หมายเลขสนาม">{{ booking.number_name }}</td> -->
+              <td data-label="ช่วงเวลา">{{ booking.time }}</td>
+              <td data-label="จำนวนครั้ง">{{ booking.count }}</td>
+            </tr>
+          </ng-container>
+          <ng-template #noResults>
+            <tr>
+              <td colspan="5" style="text-align: center;">ไม่มีข้อมูลการจองในช่วงเวลานี้</td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

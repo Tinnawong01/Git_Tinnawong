@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="grid-item item1">
+    <div class="box flex-between" style="border-bottom:0px;margin-bottom: 5px;">
+      <div class="text-top">
+        <p><i class="fa fa-bar-chart"></i> Admin - รายงานข้อมูล เดือน</p>
+        <p style="font-size: 14px;">รายงานข้อมูลการเข้าใช้สนามกีฬา</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-item" style="margin-top: 10px;">
+    <div class="box grid-box-two1" style="background-color: #f1f1f1; border-radius: 5px; padding: 10px; border-bottom: 0px;">
+      <div class="text-top">
+        <p style="font-size: 18px;"><i class="fas fa-chart-bar"></i>จำนวนการจอง / การเข้าใช้งานสนามกีฬา</p>
+      </div>
+      <div class="grid-select3">
+        <button class="button-back1" (click)="showAllData()">ทั้งหมด</button>
+        <input type="date" (change)="onDateChange($event)" style="margin-bottom: 0px;">
+        
+        <select (change)="onMonthChange($event)">
+          <option value="">เลือกเดือน</option>
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+        
+        <select (change)="onYearChange($event)">
+          <option value="">เลือกปี</option>
+          <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+      
+      
+      
+    </div>
+    <div style="margin-top: 20px;">
+      <canvas baseChart 
+      [data]="barChartData" 
+      [options]="barChartOptions" 
+      [legend]="barChartLegend" 
+      [plugins]="barChartPlugins">
+    </canvas>
+    </div> 
+  </div>
+</div>

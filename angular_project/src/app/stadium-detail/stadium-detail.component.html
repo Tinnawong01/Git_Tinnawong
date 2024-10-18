@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box1">
+            <div class="text-top">
+                <p><i class="fa fa-database"></i> รายละเอียดข้อมูลสนาม</p>
+                <div class="text-none">
+                    <p>ศูนย์กีฬาแห่งมหาวิทยาลัยจองสนามกีฬาออนไลน์และเช็คอินได้ง่ายๆในที่เดียว</p>
+                </div>
+            </div>
+            <a routerLink="/home">
+                <div class="button-back"><i class="fa fa-reply"></i></div>
+            </a>
+        </div>
+    </div>
+    <ng-container *ngFor="let stadium of Stadiumshow">
+        <div class="grid-item item1">
+            <div class="text-top hr text20">
+                <p><i class="fa fa-soccer-ball-o"></i> {{ stadium.stadium_name }}</p>
+            </div>
+            <div class="text">
+                <p><span>สนามกีฬาชนิด</span> : {{ stadium.stadium_name }} <br>
+                    <span>สถานที่ตั้ง</span> : {{ stadium.location }}<br>
+                    <span>ข้อมูลสนาม</span> : {{ stadium.info_stadium }}<br>
+                    <span>ช่วงเวลา เปิด-ปิด ให้บริการ</span> : วันจันทร์ถึงวันศุกร์ เวลา 8.00 - 16.00 น. |
+                    <span>หยุด</span> วันเสาร์-อาทิตย์ เเละวันหยุดนักขัตฤกษ์ <br>
+                    <span>ระเบียบการให้บริการ</span><br>
+                    1. ห้ามสูบบุหรี่บริเวณสนามฟุตบอล<br>
+                    2. ห้ามนำสัตว์เลี้ยงทุกชนิดเข้ามาในสนาม<br>
+                    3. ห้ามทิ้งขยะบริเวณสนาม เเละรักษาความสะอาด<br>
+                    4. ห้ามนำเเอลกอฮอล์หรือสิ่งเสพติดเข้ามาในสนามโดยเด็ดขาด<br>
+                    5. ห้ามพกพาอาวุธหรือวัตถุอันตรายเข้าในสนามโดยเด็ดขาด
+                </p>
+            </div>
+        </div>
+        <div class="grid-item item1">
+            <div class="text-top hr text20">
+                <p><i class="fas fa-map-marker-alt"></i> แผนที่ตั้งสนามกีฬา</p>
+            </div>
+            <div class="text"><img src="/assets/img/map.jpg" width="100%"></div>
+        </div>
+    </ng-container>
+</div>

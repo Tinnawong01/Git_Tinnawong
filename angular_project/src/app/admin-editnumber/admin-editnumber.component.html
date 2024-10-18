@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="grid-item item1">
+    <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+          <div class="text-top">
+              <p><i class="fa fa-database"></i>Admin - จัดการข้อมูล</p>
+              <p style="font-size: 14px;">เเก้ไขหมายเลขสนาม</p>
+          </div>
+      </div>
+  </div>
+  <div class="grid-item">
+    <ng-container *ngFor="let stadium of Stadiumids">
+      <div class="container-form">
+        <div class="text-form"><p><i class="fa fa-soccer-ball-o"></i> ประเภทสนามกีฬา</p></div>
+        <select #idStadium (change)="onIdStadiumChange(stadium.id_stadium)">
+          <option [value]="stadium.id_stadium">{{ stadium.stadium_name }}</option>
+        </select>
+    
+        <div class="text-form"><p><i class="fa fa-sort-numeric-asc"></i> หมายเลขสนาม</p></div>
+        <input type="text" [value]="stadium.number_name" #numberName/>
+    
+        <button class="button-register" (click)="EditNumber(idStadium.value, numberName.value)">
+          <i class="fa fa-cog"></i>เเก้ไขหมายเลขสนาม
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+
+

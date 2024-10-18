@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+            <div class="text-top">
+                <p><i class="fa fa-database"></i>Admin - จัดการข้อมูล</p>
+                <p style="font-size: 14px;">จัดการเพิ่ม/ลบ/แก้ไขสนามและหมายเลขสนาม</p>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="menu-box-under box-2">
+            <div routerLink="/admin-addtype" class="menu-under"><i class="fa fa-plus-circle"></i>เพิ่มประเภทสนามกีฬา
+            </div>
+            <div class="menu-under2" (click)="Memberid(IdMember)"><i class="fa fa-clock-o"></i>ช่วงเวลาที่ปิดใช้งานสนาม
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">ลำดับ</th>
+                    <th scope="col">ประเภทสนามกีฬา</th>
+                    <th scope="col">สถานที่ตั้ง</th>
+                    <th scope="col">รายละเอียดของสนาม</th>
+                    <th scope="col">หมายเลขสนาม</th>
+                    <th scope="col">รายการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let tb_stadium of Stadiums,let i = index">
+                    <tr>
+                        <td data-label="ลำดับ">{{ i + 1 }}</td>
+                        <td data-label="ประเภทสนามกีฬา">{{ tb_stadium.stadium_name }}</td>
+                        <td data-label="สถานที่ตั้ง" class="text-width width15">
+                            {{ tb_stadium.location && tb_stadium.location.length > 20 
+                                ? (tb_stadium.location | slice:0:30) + '...' 
+                                : tb_stadium.location }}
+                          </td>
+                          
+                          <td data-label="รายละเอียดของสนาม" class="text-width width10">
+                            {{ tb_stadium.info_stadium && tb_stadium.info_stadium.length > 20 
+                                ? (tb_stadium.info_stadium | slice:0:30) + '...' 
+                                : tb_stadium.info_stadium }}
+                          </td>
+                          
+                        <td scope="หมายเลขสนาม">
+                            <a (click)="Stadiumid(tb_stadium.id_stadium)"><button class="button-qr"><i
+                                        class="fa fa-sort-numeric-asc"></i>ดูสนามทั้งหมด</button></a>
+                        </td>
+                        <td scope="รายการ">
+                            <div class="box4">
+                                <a (click)="Editstadium(tb_stadium.id_stadium)"><button class="button-submit"> <i
+                                            class="fa fa-cog"></i> แก้ไข</button></a>
+                                <button class="button-view" (click)=" confirmDelete (tb_stadium.id_stadium)"><i
+                                        class="fa fa-trash"></i>ลบ</button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

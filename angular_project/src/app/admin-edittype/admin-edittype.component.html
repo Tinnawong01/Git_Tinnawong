@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+            <div class="text-top">
+                <p><i class="fa fa-database"></i>Admin - จัดการข้อมูล</p>
+                <p style="font-size: 14px;">เเก้ไขประเภทสนามกีฬา</p>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item">
+        <ng-container *ngFor="let tb_stadium of Stadiums">
+            <div class="container-form">
+                <div class="text-form"><p><i class="fa fa-soccer-ball-o"></i> แก้ไขประเภทสนาม</p></div>
+                <input type="text" [value]="tb_stadium.stadium_name" name="stadium_name" id="stadium_name" #stadium_name/>
+
+                <div class="text-form"><p><i class="fas fa-map-marker-alt"></i> สถานที่ตั้ง</p></div>
+                <input type="text" [value]="tb_stadium.location" name="location" id="location" #location />
+
+                <div class="text-form"><p><i class="fa fa-file-picture-o"></i> รูปภาพสนาม 1 ภาพ</p></div>
+                <input type="file" (change)="onFileSelected($event, 'path_img')" accept="image/png, image/jpeg, image/jpg" />
+
+                <div class="text-form"><p><i class="fas fa-info-circle"></i> รายละเอียดของสนาม</p></div>
+                <input type="text" [value]="tb_stadium.info_stadium" name="info_stadium" rows="3" cols="50" #info_stadium>
+
+                <button class="button-register" (click)="InsertStadium(stadium_name.value, location.value, info_stadium.value)"><i class="fa fa-cog"></i>เเก้ไขประเภทสนามกีฬา</button>
+            </div>
+        </ng-container>
+    </div>
+</div>

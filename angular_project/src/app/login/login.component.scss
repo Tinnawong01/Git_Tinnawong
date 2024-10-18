@@ -1,0 +1,58 @@
+.container-footer {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  span.psw {
+    float: right;
+    align-items: center;
+    display: flex;
+  }
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: rgb(234, 84, 84);
+  }
+  span {
+    font-size: 13px;
+    color: #4e4e4e;
+}
+form input,
+select,
+textarea {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+
+input,
+select {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+  @media screen and (max-width: 700px) {
+    .container-footer {
+      padding: 16px;
+      display: block;
+      border-radius: 5px;
+      text-align: center;
+    }
+  
+    span.psw {
+      float: none;
+      align-items: center;
+      display: block;
+      margin-top: 10px;
+    }
+  
+  }

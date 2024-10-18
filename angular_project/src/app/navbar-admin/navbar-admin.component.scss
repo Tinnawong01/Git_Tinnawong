@@ -1,0 +1,104 @@
+ol,
+ul {
+    padding-left: 2rem
+}
+
+dl,
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+    margin-bottom: 0
+}
+
+.logo img{
+    width: 70px;
+    height: 70px;
+}
+.btn-toggle-sidebar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    left: 10px;
+    background-color: #198b75;
+    color: #ffffff;
+    border: none;
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .sidebar-toggler {
+    display: none; 
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar-toggler {
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 0px;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 35px;
+      height: 35px;
+    }
+  }
+  
+  #sidebar {
+    transition: transform 1.7s ease;
+  }
+  
+  .sub-menu {
+    list-style: none;
+    padding-left: 2rem;
+    margin-top: 0.5rem;
+    transition: max-height 0.5s ease;
+  }
+  
+  .sub-menu li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .sub-menu a {
+    display: block;
+    border-radius: 5px;
+    padding: 10px;
+    color: #373a3c;
+    text-decoration: none;
+    transition: .2s;
+  }
+
+  
+  .sidebar-item.active > a {
+    background-color: #198b75; /* สีเขียว */
+    color: #ffffff; /* เปลี่ยนสีข้อความเป็นขาว */
+  }
+  
+  .sidebar-item.active > a .fa-chevron-down {
+    transform: rotate(180deg); /* หมุนลูกศรเมื่อเมนูเปิดอยู่ */
+  }
+  
+  .sub-menu li.active a {
+    background-color: #198b75; /* สีเขียวสำหรับ sub-menu ที่เลือก */
+    color: #ffffff; /* เปลี่ยนสีข้อความเป็นขาว */
+  }
+  
+  .sub-menu a:hover {
+    background-color: #f0f1f5;
+    color: #198b75; /* เปลี่ยนสีเป็นเขียวเมื่อ hover */
+  }
+  
+  
+  

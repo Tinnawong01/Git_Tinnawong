@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box">
+            <div class="text-top">
+                <p><i class="fas fa-calendar-check"></i> การจองของฉัน</p>
+                <div class="text-none">
+                    <p>หมายเหตุ ต้องนำ QR Code นี้ให้เจ้าหน้าที่ตรวจสอบก่อนเข้าสนามทุกครั้ง</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-check" #content>
+            <ng-container *ngFor="let BookingUser of BookingUserid">
+              <div class="grid-item item1 tcenter">
+                <div class="tt-check hr">
+                  <div class="row-check">
+                    <i class="fa fa-check-circle" style="margin-right: 5px;color: forestgreen;"></i>
+                    <h3>ทำรายการจองสำเร็จ</h3>
+                  </div>
+                  <span>{{ formattedDate(BookingUser.present_date) }} {{ BookingUser.present_time }} น.</span>
+                </div>
+                <div class="box-check">
+                  <p>ประเภทสนาม</p>
+                  <p style="font-weight: 600;font-size: 18px;">{{ BookingUser.stadium_name }}</p>
+                </div>
+                <div class="box-check">
+                  <p>หมายเลขสนาม</p>
+                  <p>{{ BookingUser.number_name }}</p>
+                </div>
+                <div class="box-check">
+                  <p>วันที่</p>
+                  <p>{{ formattedDate(BookingUser.booking_date) }}</p>
+                </div>
+                <div class="box-check hr">
+                  <p>เวลา</p>
+                  <p>{{ BookingUser.time }} น.</p>
+                </div>
+                <div class="hr">
+                  <h5>สมาชิก</h5>
+                  <p>{{ BookingUser.fname }} {{ BookingUser.lname }}</p>
+                </div>
+                <div *ngIf="BookingUserid" class="img-qr hr">
+                  <img #qrCodeImg alt="qr-code" width="100%">
+                </div>
+                <p style="font-size: 12px;margin-top: 5px;">QR Code สำหรับการตรวจสอบก่อนเข้าใช้สนาม</p>
+              </div>
+            </ng-container>
+          </div>
+          <div class="button-container">
+            <button class="button-main" (click)="downloadAsJpg()">
+              <i class="fa fa-download"></i> ดาวน์โหลด QR Code
+            </button>
+          </div>
+    </div>
+</div>

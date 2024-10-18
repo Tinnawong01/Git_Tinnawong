@@ -1,0 +1,140 @@
+form input,
+select,
+textarea {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+
+input,
+select {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+  .grid-color {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  }
+  .box-color-grid{
+    display: flex;
+    column-gap: 15px;
+  }
+  .box-color {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+  }
+  .color-white button,
+  .color2 button,
+  .color-red button,
+  .color-grey button {
+    border: none;
+    border-radius: 100%;
+    padding: 20px;
+  }
+  
+  .color-white button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+  .color2 button {
+    background-color: #dfdfdf;
+  }
+  
+  .color-red button {
+    background-color: #d63b3b;
+    border: 1px solid #bd3838;
+  }
+  .color-grey button {
+    background-color: #dfdfdf;
+    border: 1px solid #dfdfdf;
+  }
+  .box-time {
+    margin-top: 5px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  }
+  .grid-box-time {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  p {
+    color: #111111;
+}
+.red p {
+    color: #fff;
+  }
+  .grey p {
+    color: #808080;
+  }
+  .white,
+  .grey,
+  .red {
+    border-radius: 2px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    transition: .2s;
+  }
+  
+  .white {
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .grey {
+    border: 1px solid #eeeeee;
+    background-color: #eeeeee;
+    cursor: default;
+  }
+  
+  .red {
+    border: 1px solid #d63b3b;
+    background-color: #d63b3b;
+    cursor: no-drop;
+  }
+  .white:hover{
+    background-color: #f0f0f0;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .grid-color {
+      column-gap: 0px;
+      font-size: 13px;
+    }
+    .box-color-grid {
+      display: none;
+    }
+  
+    .box-color {
+      display: block;
+      text-align: center;
+    }
+  
+    .grid-box-time {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .t,
+    .f,
+    .w {
+      margin-top: 5px;
+    }
+
+  }

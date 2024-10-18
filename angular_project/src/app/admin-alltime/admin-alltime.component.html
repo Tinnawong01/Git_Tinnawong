@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+            <div class="text-top">
+                <p><i class="fa fa-database"></i>Admin - จัดการข้อมูล</p>
+                <p style="font-size: 14px;">จัดการเพิ่ม/ลบ/แก้ไขสนามและหมายเลขสนาม</p>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="menu-box-under">
+            <div (click)="confirmCancelAll()" class="menu-under3"><i class="fa fa-times"></i>ยกเลิกทั้งหมด</div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">ลำดับ</th>
+                    <th scope="col">สนามกีฬา</th>
+                    <th scope="col">หมายเลขสนาม</th>
+                    <th scope="col">วันที่</th>
+                    <th scope="col">ช่วงเวลา</th>
+                    <th scope="col">ชื่อ-นามสกุล</th>
+                    <th scope="col">รายการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="BookingUserid.length > 0; else noBookings">
+                    <tr *ngFor="let BookingUser of displayedBookings; let i = index">
+                        <td data-label="ลำดับ">{{ i + 1 }}</td>
+                        <td data-label="สนามกีฬา">{{ BookingUser.stadium_name }}</td>
+                        <td data-label="หมายเลขสนาม">{{ BookingUser.number_name }}</td>
+                        <td data-label="วันที่">{{ formattedDate(BookingUser.booking_date) }}</td>
+                        <td data-label="ช่วงเวลา">{{ BookingUser.time }} น.</td>
+                        <td data-label="ชื่อ-นามสกุล">{{ BookingUser.fname }}</td>
+                        <td data-label="">
+                            <div class="box-button">
+                                <button (click)="confirmDeletebooking(BookingUser.id_booking)" class="button-view" style="width:100%"><i class="fa fa-times"></i> ยกเลิก</button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-container>
+                <ng-template #noBookings>
+                    <tr>
+                        <td colspan="7" class="text-center">ยังไม่มีข้อมูลการจองสนาม</td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <a (click)="previousPage()">&laquo;</a>
+            <ng-container *ngIf="true"> 
+              <a *ngFor="let page of totalPages()" [class.active]="page === currentPage" (click)="setPage(page)">
+                {{ page }}
+              </a>
+            </ng-container>
+            <a (click)="nextPage()">&raquo;</a>
+        </div>
+    </div>
+</div>

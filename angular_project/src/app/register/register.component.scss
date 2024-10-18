@@ -1,0 +1,36 @@
+/* CSS */
+.password-container {
+    position: relative;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    right: 10px; /* Adjust as needed */
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  input[type="password"] {
+    padding-right: 30px; /* Adjust based on icon size */
+  }
+  form input,
+  select,
+  textarea {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    border-radius: 2px;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    border-radius: 2px;
+  }

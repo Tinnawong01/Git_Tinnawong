@@ -1,0 +1,86 @@
+<div>
+  <button (click)="toggleSidebar()" class="btn-toggle-sidebar">
+    <i style="margin-right: 0px;" *ngIf="!isSidebarActive" class="fas fa-bars"></i>
+    <i style="margin-right: 0px;" *ngIf="isSidebarActive" class="fas fa-times"></i>
+  </button>
+</div>
+
+<div id="sidebar" *ngIf="isAdmin" [ngClass]="{'active': isSidebarActive}">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="d-flex justify-content-between" style="display: flex; justify-content: space-between;">
+        <div class="logo">
+          <a routerLink="/admin-main"><img src="assets/icon/man.png" alt="Logo"></a>
+        </div>
+        <button class="sidebar-toggler" (click)="toggleSidebar()">
+          <i style="margin-right: 0px;" class="fa fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="sidebar-menu">
+      <ul class="menu">
+        <li class="sidebar-title"><b>เมนู - จัดการข้อมูล</b></li>
+        <li class="sidebar-item" [class.active]="isActive('หน้าหลัก')" (click)="setActiveMenu('หน้าหลัก')">
+          <a routerLink="/admin-main" class='sidebar-link'>
+            <i class="fa fa-home"></i>
+            <span>หน้าหลัก</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [class.active]="isActive('ประวัติการจอง')" (click)="setActiveMenu('ประวัติการจอง')">
+          <a routerLink="/admin-history" class='sidebar-link'>
+            <i class="fa fa-search"></i>
+            <span>ประวัติการจอง</span>
+          </a>
+        </li>
+        <li class="sidebar-item" [class.active]="isActive('จัดการข้อมูล')" (click)="setActiveMenu('จัดการข้อมูล')">
+          <a routerLink="/admin-manage" class='sidebar-link'>
+            <i class="fa fa-database"></i>
+            <span>จัดการข้อมูล</span>
+          </a>
+        </li>
+        <!-- <li class="sidebar-item" [class.active]="isSubMenuActive('รายงานข้อมูล')">
+          <a class='sidebar-link' style="cursor: pointer;" (click)="toggleSubMenu('รายงานข้อมูล')">
+            <i class="fa fa-bar-chart"></i>
+            <span>รายงานข้อมูล</span>
+            <i style="margin-left: 7px;" class="fas fa-chevron-down"></i>
+          </a>
+          <ul *ngIf="isSubMenuActive('รายงานข้อมูล')" class="sub-menu">
+            <li [class.active]="isActive('admin-report')">
+              <a routerLink="/admin-report" (click)="setActiveMenu('admin-report')">
+                <i style="margin-right: 10px;" class="fas fa-calendar-day"></i>ประจำวัน
+              </a>
+            </li>
+            <li [class.active]="isActive('admin-report-month')">
+              <a routerLink="/admin-report-month" (click)="setActiveMenu('admin-report-month')">
+                <i style="margin-right: 10px;" class="fas fa-calendar-alt"></i>ประจำเดือน
+              </a>
+            </li>
+            <li [class.active]="isActive('admin-report-time')">
+              <a routerLink="/admin-report-time" (click)="setActiveMenu('admin-report-time')">
+                <i style="margin-right: 10px;" class="fa fa-clock-o"></i>ช่วงเวลา
+              </a>
+            </li>
+          </ul>
+        </li> -->
+        
+        
+        
+        <li class="sidebar-title"><b>เมนู - ส่วนอื่น</b></li>
+        <ng-container *ngFor="let profile of profileshow">
+          <li class="sidebar-item" [class.active]="isActive('ข้อมูลส่วนตัว')" (click)="setActiveMenu('ข้อมูลส่วนตัว'); Memberid(profile.id_member)"  style="cursor: pointer;">
+            <a class='sidebar-link'>
+              <i class="fas fa-user"></i>
+              <span>ข้อมูลส่วนตัว</span>
+            </a>
+          </li>
+        </ng-container>
+        <li class="sidebar-item" [class.active]="isActive('ออกจากระบบ')" (click)="setActiveMenu('ออกจากระบบ'); logout()" style="cursor: pointer;">
+          <a class='sidebar-link'>
+            <i class="fas fa-sign-out-alt"></i>
+            <span>ออกจากระบบ</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

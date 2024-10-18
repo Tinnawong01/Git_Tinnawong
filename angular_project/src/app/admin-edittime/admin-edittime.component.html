@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="grid-item item1">
+    <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+      <div class="text-top">
+        <p><i class="fa fa-database"></i>Admin - จัดการข้อมูล</p>
+        <p style="font-size: 14px;">เเก้ไขช่วงเวลาที่ต้องการปิดใช้งานหมายเลขสนาม</p>
+      </div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <div class="container-form">
+      <ng-container *ngFor="let stadiumid of Stadiumids">
+        <div class="text-form">
+          <p><i class="fa fa-soccer-ball-o"></i> ประเภทสนามกีฬา</p>
+        </div>
+        <input type="text" readonly="true" [value]="stadiumid.stadium_name" />
+        <div class="text-form">
+          <p><i class="fa fa-sort-numeric-asc"></i> หมายเลขสนาม</p>
+        </div>
+        <input type="text" readonly="true" [value]="stadiumid.number_name" />
+        <div class="text-form">
+          <p><i class="fa fa-calendar"></i> วันที่</p>
+        </div>
+        <input type="date" [(ngModel)]="booking_date" />
+        <div class="text-form">
+          <p><i class="fa fa-clock-o"></i> เลือกช่วงเวลาที่ต้องการปิดใช้งาน</p>
+        </div>
+        <div class="time-check">
+          <ng-container *ngFor="let time_slot of time_slots">
+            <div class="time-box">
+              <p>{{ time_slot.time }}</p>
+              <label class="toggle-switch">
+                <input type="checkbox" [(ngModel)]="selectedTimes[time_slot.id_time]" (change)="onTimeSlotChange(time_slot.id_time, $event)">
+                <div class="toggle-switch-background">
+                  <div class="toggle-switch-handle"></div>
+                </div>
+              </label>
+            </div>
+          </ng-container>
+        </div>
+        <button class="button-register" (click)="Adminbooking(booking_date, stadiumid.id_stadium, stadiumid.id_number, selectedTimes)"
+                [disabled]="!booking_date">
+          <i class="fa fa-plus-circle"></i>เเก้ไขช่วงเวลา
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>

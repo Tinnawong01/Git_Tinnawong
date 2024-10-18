@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="grid-item item1">
+      <div class="box">
+          <div class="text-top">
+              <p><i class="far fa-calendar-alt"></i> จองสนามกีฬา</p>
+              <div class="text-none"><p>ตรวจสอบสถานะสนามก่อนจองทุกครั้ง สนามมีการจองเเล้วจะไม่สามารถกดจองได้</p></div>
+          </div>
+      </div>
+      <div class="grid-search">
+          <div>
+            <p><i class="fa fa-soccer-ball-o"></i>เลือกกีฬา</p>
+            <select [(ngModel)]="selectedStadiumId">
+              <option value="0">เลือกสนามกีฬา</option>
+              <ng-container *ngFor="let stadium of Stadiumshow">
+                <option [value]="stadium.id_stadium">- {{ stadium.stadium_name }}</option>
+              </ng-container>
+            </select>
+          </div>
+          <div>
+            <p><i class="far fa-calendar-alt"></i>เลือกวันที่</p>
+            <input type="date" id="date" name="date" [(ngModel)]="selectedDate" [min]="minDate">
+          </div>
+        </div>
+        <button class="button-main" (click)="searchBookingTime()"><i class="fa fa-search"></i>ค้นหาสนามกีฬา</button>
+  </div>
+
+  <div class="grid-item item1">
+      <div class="grid-color">
+          <div class="box-color-grid">
+              <div class="color-white box-color">
+                  <button></button>
+                  <p style="font-size: 16px;">ว่าง</p>
+              </div>
+              <div class="color-red box-color">
+                  <button></button>
+                  <p style="font-size: 16px;">มีการจอง</p>
+              </div>
+              <div class="color-grey box-color">
+                <button></button>
+                <p style="font-size: 16px;">หมดเวลา</p>
+            </div>
+          </div>
+          <p style="color: #ff1900; font-size: 16px;"><i class="fa fa-warning"></i> จองได้ครั้งละ 1 ช่วงเวลา</p>
+      </div>
+      <ng-container *ngFor="let stadiumid of Stadiumids; let i = index">
+        <div class="box-time">
+          <div class="box1">
+            <div class="tag-color">{{ stadiumid.stadium_name }} : {{ stadiumid.number_name }}</div>
+            <p style="font-size: 16px;">{{ formatDate(selectedDate) }}</p>
+          </div>
+          <div class="grid-box-time">
+            <ng-container *ngFor="let time_slot of time_slots">
+              <div [ngClass]="{
+                  'red': isBooked(time_slot.id_time, stadiumid.id_number),
+                  'grey': !isBooked(time_slot.id_time, stadiumid.id_number) && isPastTime(time_slot.id_time, stadiumid.id_number),
+                  'white': !isBooked(time_slot.id_time, stadiumid.id_number) && !isPastTime(time_slot.id_time, stadiumid.id_number),
+                  'disabled': isPastTime(time_slot.id_time, stadiumid.id_number) && !isBooked(time_slot.id_time, stadiumid.id_number)
+                }"
+                [style.pointer-events]="isPastTime(time_slot.id_time, stadiumid.id_number) && !isBooked(time_slot.id_time, stadiumid.id_number) ? 'none' : 'auto'"
+                (click)="handleBookingClick(time_slot.id_time, stadiumid.id_number, stadiumid.id_stadium)">
+                <p>{{ time_slot.time }}</p>
+                <p *ngIf="isBooked(time_slot.id_time, stadiumid.id_number)">
+                  มีการจอง
+                </p>
+                <p *ngIf="!isBooked(time_slot.id_time, stadiumid.id_number) && isPastTime(time_slot.id_time, stadiumid.id_number)">
+                  หมดเวลา
+                </p>
+                <p *ngIf="!isBooked(time_slot.id_time, stadiumid.id_number) && !isPastTime(time_slot.id_time, stadiumid.id_number)">
+                  ว่าง
+                </p>
+              </div>
+            </ng-container>
+            
+                      
+          </div>
+        </div>
+      </ng-container>
+  </div>
+</div>

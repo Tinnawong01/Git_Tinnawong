@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="agrid-item grid-item item1">
+        <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+            <div class="text-top">
+                <p><i class="fas fa-thumbs-up"></i>Admin - ยืนยันการเข้าใช้สนาม</p>
+                <p style="font-size: 14px;">ตรวจสอบรายชื่อก่อนทำการยืนยัน</p>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item">
+        <div class="content-check">
+            <ng-container *ngFor="let booking of filteredBookings">
+                <div class="grid-item item1 tcenter">
+                  <div class="tt-check hr">
+                    <div class="row-check">
+                      <i class="fa fa-check-circle" style="margin-right: 5px;color: forestgreen;"></i>
+                      <h3>ทำรายการจองสำเร็จ</h3>
+                    </div>
+                    <span>{{ booking.present_date ? formattedDate(booking.present_date) : 'ไม่ระบุวันที่' }} {{ booking.present_time || 'ไม่ระบุเวลา' }} น.</span>
+                  </div>
+                  <div class="box-check">
+                    <p>ประเภทสนาม</p>
+                    <p style="font-weight: 600;font-size: 18px;">{{ booking.stadium_name }}</p>
+                  </div>
+                  <div class="box-check">
+                    <p>หมายเลขสนาม</p>
+                    <p>{{ booking.number_name }}</p>
+                  </div>
+                  <div class="box-check">
+                    <p>วันที่</p>
+                    <p>{{ formattedDate(booking.booking_date) }}</p>
+                  </div>
+                  <div class="box-check hr">
+                    <p>เวลา</p>
+                    <p>{{ booking.time }} น.</p>
+                  </div>
+                  <div class="hr">
+                    <h5>สมาชิก</h5>
+                    <p>{{ booking.fname }} {{ booking.lname }}</p>
+                  </div>
+                  <div class="img-qr hr">
+                    <img [src]="booking.qrCodeUrl" alt="qr-code" width="100%">
+                  </div>
+                  <p style="font-size: 12px;margin-top: 5px;">QR Code สำหรับการตรวจสอบก่อนเข้าใช้สนาม</p>
+                </div>
+                <button (click)="approveBooking(booking.id_booking)" class="button-submit" style="display: flex;align-items: center; justify-content: center;">
+                    <i class="fas fa-thumbs-up"></i>ยืนยันการเข้าใช้สนาม
+                  </button>
+              </ng-container>
+        </div>
+    </div>
+</div>

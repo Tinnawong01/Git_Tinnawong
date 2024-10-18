@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="grid-item item1">
+    <div class="box" style="border-bottom:0px;margin-bottom: 0px;">
+        <div class="text-top">
+            <p style="display: flex; align-items: center;"><i class="fas fa-chart-pie"></i> ภาพรวมระบบจองสนามกีฬา</p>
+        </div>
+    </div>
+</div>
+  <div class="menu-box-grid" style="margin-top: 0px;">
+    <div class="menu-main-admin">
+      <div class="menu-main-icon">
+        <i class="fas fa-calendar-alt" style="margin-right: 0px;"></i>
+      </div>
+      <div class="menu-main-text">
+        <p>จองทั้งหมด</p>
+        <span>จอง {{ totalBookings }} ครั้ง / ใช้งาน {{ totalBookinguse }} ครั้ง</span>
+      </div>
+    </div>
+
+    <div class="menu-main-admin">
+      <div class="menu-main-icon" style="background-color:#2c3e50 ;">
+        <i class="fas fa-users" style="margin-right: 0px;"></i>
+      </div>
+      <div class="menu-main-text">
+        <p>จำนวนสมาชิก</p>
+        <span>{{ totalMembers }} คน</span>
+      </div>
+    </div>
+
+    <div class="menu-main-admin">
+      <div class="menu-main-icon" style="background-color: #e74c3c;">
+        <i class="far fa-futbol" style="margin-right: 0px;"></i>
+      </div>
+      <div class="menu-main-text">
+        <p>จำนวนสนาม</p>
+        <span>{{ totalStadiums }} ประเภทกีฬา {{ totalNumbers }} สนาม</span>
+      </div>
+    </div>
+  </div>
+  <div class="grid-item" style="margin-top: 10px;">
+    <div class="box grid-box-two1" style="background-color: #f1f1f1; border-radius: 5px; padding: 10px; border-bottom: 0px;">
+      <div class="text-top">
+        <p style="font-size: 18px;"><i class="fas fa-chart-bar"></i>จำนวนการจอง / การเข้าใช้งานสนามกีฬา</p>
+      </div>
+      <div class="grid-select3">
+        <button class="button-back1" (click)="showAllData()">ทั้งหมด</button>
+        <input type="date" (change)="onDateChange($event)" style="margin-bottom: 0px;">
+        
+        <select (change)="onMonthChange($event)">
+          <option value="">เลือกเดือน</option>
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+        
+        <select (change)="onYearChange($event)">
+          <option value="">เลือกปี</option>
+          <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <canvas baseChart 
+      [data]="barChartData" 
+      [options]="barChartOptions" 
+      [legend]="barChartLegend" 
+      [plugins]="barChartPlugins">
+    </canvas>
+    </div>     
+  </div>
+  <!-- <div class="grid-item" style="margin-top: 10px;">
+    <table>
+      <tr>
+        <th>ลำดับ</th>
+        <th>ประเภทสนาม</th>
+        <th>จำนวนการจอง</th>
+        <th>จำนวนการเข้าใช้งาน</th>
+      </tr>
+      <tr *ngFor="let booking of bookingData; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ booking.stadium_name }}</td>
+        <td>{{ booking.booking_total }}</td>
+        <td>{{ booking.booking_count }}</td>
+      </tr>
+    </table>
+  </div> -->
+</div>

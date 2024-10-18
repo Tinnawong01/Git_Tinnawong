@@ -1,0 +1,52 @@
+.text20 {
+  font-size: 20px;
+}
+
+.text {
+  margin-top: 5px;
+}
+
+.text p {
+  line-height: 40px;
+  color: #111111;
+}
+
+.text p span {
+  font-size: 20px;
+  color: #000000;
+}
+
+span {
+  padding: 2px 5px;
+  background-color: #ececec;
+  border-radius: 5px;
+}
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 700px) {
+
+  
+  .text {
+    margin-top: 5px;
+  }
+  
+  .text p {
+    line-height: 35px;
+    color: #111111;
+    font-size: 13px;
+  }
+  
+  .text p span {
+    font-size: 15px;
+    color: #000000;
+  }
+  
+  span {
+    padding: 1px 3px;
+    background-color: #ececec;
+    border-radius: 5px;
+  }
+
+}

@@ -1,0 +1,25 @@
+form input,
+select,
+textarea {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+
+input,
+select {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 10px 10px 10px;
+}

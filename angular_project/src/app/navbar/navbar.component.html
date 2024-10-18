@@ -1,0 +1,26 @@
+<section class="top-nav" *ngIf="!isAdmin">
+  <div class="nav-center">
+    <div  style="font-size: 20px; margin: 0 1rem">
+      <a routerLink="/home"><i class="fa fa-bookmark"></i> จองสนามกีฬา มก.ฉกส</a>
+    </div>
+    <input id="menu-toggle" type="checkbox" />
+    <label class="menu-button-container" for="menu-toggle">
+      <div class="menu-button"></div>
+    </label>
+    <ul class="menu">
+      <ng-container *ngIf="profileshow.length > 0; else loggedOut">
+        <ng-container *ngFor="let profile of profileshow">
+          <li routerLink="/home" class="button-nav-a"><i class="fa fa-home"></i>หน้าหลัก</li>
+          <li routerLink="/booking-my" [queryParams]="{ id_member: profile.id_member }" class="button-nav-a"><i class="fas fa-calendar-check"></i>รายการจองของฉัน</li>
+          <li (click)="Memberid(profile.id_member)" class="button-nav-a"><i class="fa fa-user"></i>{{ profile.fname }} {{ profile.lname }}</li>
+          <li (click)="logout()" class="button-nav-a"><i class="fas fa-sign-out-alt"></i>ออกจากระบบ</li>
+        </ng-container>
+      </ng-container>
+      <ng-template #loggedOut>
+        <li routerLink="/login" class="button-nav-a"><i class="fa fa-lock"></i>เข้าสู่ระบบ</li>
+        <li routerLink="/register" class="button-nav"><i class="fa fa-user-plus"></i>สมัครสมาชิก</li>
+      </ng-template>
+    </ul>
+  </div>
+</section>
+

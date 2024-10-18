@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+            <div class="text-top">
+                <p><i class="fa fa-database"></i>Admin - จัดการข้อมูล</p>
+                <p style="font-size: 14px;">เพิ่มประเภทสนามกีฬา</p>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item">
+            <div class="container-form">
+                    <div class="text-form"><p><i class="fa fa-soccer-ball-o"></i> เพิ่มประเภทสนาม</p></div>
+                    <input type="text" placeholder="ตัวอย่าง ฟุตบอล" name="stadium_name" id="stadium_name" #stadium_name/>
+
+                    <div class="text-form"><p><i class="fas fa-map-marker-alt"></i> สถานที่ตั้ง</p></div>
+                    <input type="text" placeholder="ตัวอย่าง ชั้น 1 อาคารปฏิบัติการวิทยา .." name="location" id="location" #location />
+
+                    <div class="text-form"><p><i class="fa fa-file-picture-o"></i> รูปภาพสนาม 1 ภาพ</p></div>
+                    <input type="file" placeholder="ประเภทสนาม .." (change)="onFileSelected($event, 'path_img')" accept="image/png, image/jpeg, image/jpg" />
+
+                    <div class="text-form"><p><i class="fas fa-info-circle"></i> รายละเอียดของสนาม</p></div>
+                    <input type="text" placeholder="ตัวอย่าง ระเบียบการให้บริการ ..	" name="info_stadium" rows="3" cols="50" #info_stadium>
+
+                <button class="button-register" (click)="InsertStadium(stadium_name.value, location.value, info_stadium.value)"><i class="fa fa-plus-circle"></i>เพิ่มประเภทสนามกีฬา</button>
+            </div>
+    </div>
+</div>

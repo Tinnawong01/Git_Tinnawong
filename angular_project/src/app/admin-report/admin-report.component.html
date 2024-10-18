@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="grid-item item1">
+    <div class="box flex-between" style="border-bottom:0px;margin-bottom: 5px;">
+      <div class="text-top">
+        <p><i class="fa fa-bar-chart"></i> Admin - รายงานข้อมูล วัน</p>
+        <p style="font-size: 14px;">รายงานข้อมูลการเข้าใช้สนามกีฬา</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-item" style="margin-top: 10px;">
+    <div class="box grid-box-two" style="background-color: #f1f1f1; border-radius: 5px; padding: 10px; border-bottom: 0px;">
+      <div class="text-top">
+        <p style="font-size: 18px;"><i class="fas fa-chart-bar"></i>จำนวนการจอง / การเข้าใช้งานสนามกีฬา</p>
+      </div>
+      <div class="grid-select1">
+        <input type="date" 
+               style="margin-bottom: 0px;" 
+               (change)="onDateChange($event)" 
+               [value]="currentDate">
+      </div>
+      
+
+      
+    </div>
+    <div style="margin-top: 20px;">
+      <canvas baseChart 
+      [data]="barChartData" 
+      [options]="barChartOptions" 
+      [legend]="barChartLegend" 
+      [plugins]="barChartPlugins">
+    </canvas>
+    </div> 
+  </div>
+</div>

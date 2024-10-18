@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+            <div class="text-top">
+                <p><i class="fa fa-search"></i>Admin - ประวัติการจอง</p>
+                <p style="font-size: 14px;">ค้นหาประวัติการจองของสมาชิกโดย ค้นหาผ่านชื่อ-นามสกุล</p>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item">
+        <form action="/qr-code" method="post">
+            <table class="table table-striped" id="table1">
+                <thead>
+                    <tr>
+                        <th scope="col">ลำดับ</th>
+                        <th scope="col">ชื่อ-นามสกุล</th>
+                        <th scope="col">ประเภทสนามกีฬา</th>
+                        <th scope="col">หมายเลขสนาม</th>
+                        <th scope="col">วัน/เดือน/ปี</th>
+                        <th scope="col">ช่วงเวลา</th>
+                        <th scope="col">สถานะ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngIf="paginatedBookings().length > 0; else noResults">
+                    <tr *ngFor="let booking of paginatedBookings(); let i = index">
+                      <td data-label="ลำดับ">{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+                      <td data-label="ชื่อ-นามสกุล"><div class="tag-color-name">{{ booking.fname }} {{ booking.lname }}</div></td>
+                      <td data-label="ประเภทสนามกีฬา">{{ booking.stadium_name }}</td>
+                      <td data-label="หมายเลขสนาม">{{ booking.number_name }}</td>
+                      <td data-label="วัน/เดือน/ปี">{{ formattedDate(booking.booking_date) }}</td>
+                      <td data-label="ช่วงเวลา">{{ booking.time }}</td>
+                      <td data-label="สถานะ" style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+                        <a [routerLink]="['/admin-approve']" [queryParams]="{ id_booking: booking.id_booking }" class="tag-color-name-grey">
+                          <i style="margin-right: 0px;" class="fa fa-qrcode"></i>
+                        </a>                                               
+                        <div [ngClass]="getStatusClass(booking.booking_status_label)">
+                          <i style="margin-right: 0px;" [ngClass]="getStatusIcon(booking.booking_status_label)"></i>
+                        </div>
+                      </td>
+                    </tr>
+                  </ng-container>                                  
+                  <ng-template #noResults>
+                    <tr>
+                      <td colspan="6" style="text-align: center;">ไม่มีรายชื่อนี้</td>
+                    </tr>
+                  </ng-template>
+                </tbody> 
+            </table>
+        </form>        
+    </div>
+</div>

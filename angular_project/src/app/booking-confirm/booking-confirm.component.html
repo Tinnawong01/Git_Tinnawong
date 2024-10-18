@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="grid-item item1">
+      <div class="box">
+        <div class="text-top">
+          <p><i class="far fa-calendar-alt"></i> การจองของฉัน</p>
+          <div class="text-none">
+            <p>รายการจองของฉัน สามารถยืนยันหรือยกเลิกการจองสนาม</p>
+          </div>
+        </div>
+      </div>
+      <p><i class="fa fa-soccer-ball-o"></i>ประเภทสนาม</p>
+      <input type="text" readonly="true" [value]="stadiumType"  />
+      <div class="grid-booking">
+        <div>
+          <p><i class="fa fa-sort-numeric-asc"></i>หมายเลขสนาม</p>
+          <input type="text" readonly="true" [value]="stadiumInfo"  />
+        </div>
+        <div>
+          <p><i class="far fa-calendar-alt"></i>วันที่</p>
+          <input type="text" readonly="true" [value]="formattedDate(booking_date)"  />
+        </div>
+        <div>
+            <p><i class="fa fa-clock-o"></i>ช่วงเวลา</p>
+            <input type="text" readonly="true" [value]="getFormattedTime(id_time)"  />
+        </div>
+      </div>
+      <div class="box2">
+        <button (click)="Userbooking(booking_date, id_stadium, id_number, id_time, id_member)" class="button-submit">
+          <i class="fa fa-check-circle"></i>ยืนยันการจอง
+        </button>
+        <button class="button-view" id="delete" (click)="cancelBooking()">
+          <i class="fa fa-times"></i><span class="button-text">ยกเลิกการจอง</span>
+        </button>
+          
+      </div>
+    </div>
+  </div>

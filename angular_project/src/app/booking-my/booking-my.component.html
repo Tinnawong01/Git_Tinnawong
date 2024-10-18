@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="grid-item item1">
+        <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+            <div class="text-top">
+                <p><i class="fa fa-calendar"></i> การจองของฉัน</p>
+                <div class="text-none"><p>สมาชิกสามารถยกเลิกการจองสนามไม่น้อยกว่า 2 ชั่วโมงก่อนเวลาที่จอง</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item item1">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">สนามกีฬา</th>
+                    <th scope="col">หมายเลขสนาม</th>
+                    <th scope="col">วันที่</th>
+                    <th scope="col">ช่วงเวลา</th>
+                    <th scope="col">ชื่อ-นามสกุล</th>
+                    <th scope="col">รายการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="BookingUserid.length > 0; else noBookings">
+                    <tr *ngFor="let BookingUser of BookingUserid">
+                        <td data-label="สนามกีฬา">{{ BookingUser.stadium_name }}</td>
+                        <td data-label="หมายเลขสนาม">{{ BookingUser.number_name }}</td>
+                        <td data-label="วันที่">{{ formattedDate(BookingUser.booking_date) }}</td>
+                        <td data-label="ช่วงเวลา">{{ BookingUser.time }} น.</td>
+                        <td data-label="ชื่อ-นามสกุล">{{ BookingUser.fname }}</td>
+                        <td data-label="">
+                            <div class="box-button">
+                                <button routerLink="/qr-code" [queryParams]="{ id_member: id_member }" class="button-qr" style="width:100%"><i class="fa fa-qrcode"></i> QR Code</button>
+                                <button (click)="confirmDeletebooking(BookingUser.id_booking)" 
+                                [disabled]="!canCancelBooking(BookingUser.booking_date)" 
+                                class="button-view" 
+                                style="width:100%">
+                            <i class="fa fa-times"></i> ยกเลิกการจอง
+                        </button>
+                        
+                            </div>
+                        </td>
+                    </tr>
+                </ng-container>
+                <ng-template #noBookings>
+                    <tr>
+                        <td colspan="6" class="text-center">ยังไม่มีข้อมูลการจองสนาม</td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+    </div>
+</div>

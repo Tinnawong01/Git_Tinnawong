@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="grid-item item1">
+      <div class="box" style="border-bottom:0px;margin-bottom: 5px;">
+        <div class="text-top">
+          <p><i class="fa fa-database"></i>Admin - จัดการข้อมูล</p>
+          <p style="font-size: 14px;">เพิ่มหมายเลขสนาม</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid-item">
+      <div class="container-form">
+        <div class="text-form">
+          <p><i class="fa fa-soccer-ball-o"></i> ประเภทสนามกีฬา</p>
+        </div>
+        <select #id_stadium>
+          <ng-container *ngFor="let tb_stadium of Stadiums">
+            <option [value]="tb_stadium.id_stadium">{{ tb_stadium.stadium_name }}</option>
+          </ng-container>
+        </select>
+        <div class="text-form">
+          <p><i class="fa fa-sort-numeric-asc"></i> หมายเลขสนาม</p>
+        </div>
+        <input type="text" placeholder="A12 A13 .." name="text" id="text" #number_name />
+        
+        <button class="button-register" (click)="InsertNumber(id_stadium.value, number_name.value)">
+          <i class="fa fa-plus-circle"></i>เพิ่มหมายเลขสนาม
+        </button>
+      </div>
+    </div>
+  </div>
+  
